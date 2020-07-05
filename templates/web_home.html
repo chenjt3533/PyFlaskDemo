@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- 用来显示首页的模板 -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+        thead {color:green}
+        tbody {color:blue;height:50px}
+        tfoot {color:red}
+    </style>
+</head>
+
+<body background="static/images/background.png" align="center">
+    <h1 >Hello, this is a flask demo.</h1>
+    <h2 style="font-style: italic;">This is h2 heading</h2>
+    <h3>This is <q>h3 heading</q></h3>
+    <hr/>
+    <form action="/test" method="post">
+        radio:
+        <input type="radio" name="rdoTest" value="person">个人</input>
+        <input type="radio" name="rdoTest" value="business">商家</input>
+        <p/>
+        checkbox:
+        <input type="checkbox" name="cbxTest" value="apple" checked="checked">苹果</input>
+        <input type="checkbox" name="cbxTest" value="banana">香蕉</input>
+        <p/>
+        select:
+        <select name="selTest">
+            <option value="selTest1">test1</option>
+            <option value="selTest2">test2</option>
+        </select>
+        <p/>
+        帐号: <input name="txtName" placeholder="Username">
+		<p/>
+        密码: <input name="txtPassword" placeholder="Password" type="password"></p>
+        <p/>
+        button:
+        <button name="btnTest" onclick="submit_test">提交测试</button>
+    </form>
+    <hr/>
+    unorder list:
+    <ul align="left">
+        <li>Coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+    <p/>
+    order list:
+    <ol align="left">
+        <li>Coffee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ol>
+    <p/>
+    <hr/>
+    table:
+    <table border="1" align="center">
+        <caption>测试</caption>
+        <thead>
+            <tr>
+                <th>Heading</th>
+                <th>Another Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>row 1, cell 1</td>
+                <td>row 1, cell 2</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>row 2, cell 2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+              <td>tf1</td>
+              <td>tf2</td>
+            </tr>
+        </tfoot>
+    </table>
+    <p/>
+    <hr/>
+    image:
+    <img src="static/images/flask.png" />
+    <p/>
+    audio:
+    <audio controls="controls">
+      <source src="static/sounds/horse.mp3" type="audio/mpeg"/>
+      <embed height="100" width="100" src="static/sounds/horse.mp3"/>
+    </audio>
+    <p/>
+    video:
+    <video width="320" height="240" controls="controls" autoplay="autoplay">
+        <source src="static/videos/movie.ogv" type="video/ogg" />
+        <object data="static/videos/movie.ogv" width="320" height="240">
+            <embed width="320" height="240" src="static/movie.ogg" />
+        </object>
+    </video>
+    <p/>
+    <hr/>
+    
+    <hr/>
+    <form action="/sign_in" method="get">
+        <button name="btnEnterLogin" onclick="sign_in">进入登录页面</button>
+    </form>
+</body>
+
+</html>
