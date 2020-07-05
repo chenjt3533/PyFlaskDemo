@@ -1,6 +1,7 @@
 # 路由管理
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, Response
 from appservice import AppServer
+from user import User, users_repository
 
 appServer = AppServer.Instance()
 app = appServer.GetFlask()
@@ -33,6 +34,18 @@ def teardown_request(e):
 def home():
     return render_template("web_home.html")
 
+# 注册
+@app.route("/sign_up", methods=["GET", "POST"])
+def sign_up():
+    if request.method == "GET":
+        return render_template("web_regist.html")
+    elif request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        new_user = User(username, password, users_repository.next_index())
+        users_repository.save_user(new_user)
+        return Response("<body align=\"center\">Registered Successfully <p/><a href=\"/sign_in\">go to login</a></body>")
+
 # 登录
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
@@ -41,10 +54,14 @@ def sign_in():
     elif request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        if username == "admin" and password == "123456":
+        registeredUser = users_repository.get_user(username)
+        print('Register user %s , password %s' % (username, password))
+        if registeredUser != None and registeredUser.password == password:
             return render_template("web_ok.html", username=username)
-        return render_template("web_login.html", message="username or password error!", username=username)
+        else:
+            return render_template("web_login.html", message="username or password error!", username=username)
 
+# test
 @app.route("/test", methods=["POST"])
 def submit_test():
     rdoTestValue = request.form.get("rdoTest")
@@ -61,3 +78,8 @@ def submit_test():
         "txtPassword": txtPassword
     }
     return jsonify(data)
+
+# 404
+@app.errorhandler(404)
+def page_not_found(error):
+    return "error 404"

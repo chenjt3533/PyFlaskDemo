@@ -16,7 +16,7 @@
     </style>
 </head>
 
-<body background="static/images/background.png" align="center">
+<body background="static/images/background.png" style="text-align:center;">
     <h1 >Hello, this is a flask demo.</h1>
     <h2 style="font-style: italic;">This is h2 heading</h2>
     <h3>This is <q>h3 heading</q></h3>
@@ -42,6 +42,12 @@
         <p/>
         button:
         <button name="btnTest" onclick="submit_test">提交测试</button>
+    </form>
+    <form action="/sign_up" method="get">
+        <button name="btnEnterRegist" onclick="sign_up">进入注册页面</button>
+    </form>
+    <form action="/sign_in" method="get">
+        <button name="btnEnterLogin" onclick="sign_in">进入登录页面</button>
     </form>
     <hr/>
     unorder list:
@@ -104,12 +110,6 @@
         </object>
     </video>
     <p/>
-    <hr/>
-    
-    <hr/>
-    <form action="/sign_in" method="get">
-        <button name="btnEnterLogin" onclick="sign_in">进入登录页面</button>
-    </form>
 </body>
 
 </html>

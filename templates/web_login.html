@@ -9,13 +9,13 @@
 
 <body style="text-align:center;">
 	<form action="/sign_in" method="post">
-		<legend>请先登录</legend>
+		<legend>用户登录</legend>
 		<p>帐号: <input name="username" placeholder="Username" value="{{ username }}"></p>
 		<p>密码: <input name="password" placeholder="Password" type="password"></p>
 		<p><button type="submit">登录</button></p>
 	</form>
     {% if message %}
-	<p style="color: red">{{ message }}</p>
+        <p style="color: red">{{ message }}</p>
 	{% endif %}
 </body>
 
